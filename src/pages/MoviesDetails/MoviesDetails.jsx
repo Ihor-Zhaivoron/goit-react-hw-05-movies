@@ -9,9 +9,9 @@ import {
 } from 'react-router-dom';
 import no_image from '../../no-image.jpg';
 import { getMovieDetail } from '../../api';
-import css from './MovieDetails.module.css';
+import css from './MoviesDetails.module.css';
 
-const MovieDetails = () => {
+const MoviesDetails = () => {
   const location = useLocation();
   const goBack = location.state?.from ?? '/';
 
@@ -22,8 +22,8 @@ const MovieDetails = () => {
     getMovieDetail(param.id).then(setMovieDetail);
   }, [param.id]);
 
-  if (movieDetail === 0) {
-    return <p>Something wrong </p>;
+  if (movieDetail.length === 0) {
+    return <p>Something wrong :(</p>;
   }
 
   const linkImg = `https://image.tmdb.org/t/p/w500/${movieDetail['poster_path']}`;
@@ -63,7 +63,7 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className={css.add_info}>
-        <b>Additiinal information</b>
+        <b>Additional information</b>
         <ul className={css.add_infoList}>
           <li>
             <NavLink
@@ -89,4 +89,4 @@ const MovieDetails = () => {
     </>
   );
 };
-export default MovieDetails;
+export default MoviesDetails;

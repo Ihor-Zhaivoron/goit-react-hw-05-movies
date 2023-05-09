@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams, Link } from 'react-router-dom';
-import { searhMovie } from 'api';
+import { searchMovie } from 'api';
+
 import css from './Movies.module.css';
 
 const Movies = () => {
   const location = useLocation();
-  const [searhParams, setSearhParams] = useSearchParams();
-  const query = searhParams.get('query') ?? '';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
 
   const [input, setInput] = useState(query);
   const [films, setFilms] = useState([]);
